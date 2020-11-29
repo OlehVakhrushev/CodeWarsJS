@@ -624,3 +624,356 @@ function isVeryEvenNumber(n) {
         return false;
     }
 }
+
+
+// Get the next prime number!
+//     You will get a numbern (>= 0) and your task is to find the next prime number.
+//     Make sure to optimize your code: there will numbers tested up to about 10^12.
+//
+// Examples
+// 5   =>  7
+// 12  =>  13
+
+
+function nextPrime(n){
+    if (n === 0) return 2;
+    for (let i = n + 1; ;i++) {
+        let isPrime = true;
+        for (let j = 2; j * j <= i;j++) {
+            if (i % j === 0) {
+                isPrime = false;
+                break;
+            }
+
+        }
+        if (isPrime) {
+            return i;
+        }
+    }
+
+}
+
+//
+// I assume most of you are familiar with the ancient legend of the rice
+// (but I see wikipedia suggests wheat, for some reason) problem,
+// but a quick recap for you: a young man asks as a
+// compensation only 1 grain of rice for the first square, 2 grains for the second,
+// 4 for the third, 8 for the fourth and so on, always doubling the previous.
+// Your task is pretty straightforward (but not necessarily easy): given an amount of grains,
+// you need to return up to which square of the chessboard one should count in order to get at least as many.
+
+function squaresNeeded(grains){
+    let square = 0;
+    let sum = 0;
+    while (sum < grains) {
+        sum += 2 ** square;
+        square++;
+    }
+    return square;
+}
+
+// Дано два числа n и m. Найдите сумму всех целых чисел от n до m включительно.
+//
+//     Напишите функцию с именем sumFromNToM, которая принимает два числа n, m и возвращает сумму чисел от n до m. В решении используйте цикл for.
+//
+// Примеры:
+//
+//     функция sumFromNToM(5, 5) должна возвратить 5;
+// функция sumFromNToM(5, 2) должна возвратить 0;
+// функция sumFromNToM(12, 13) должна возвратить 25;
+// функция sumFromNToM(5, 7) должна возвратить 18.
+
+
+function sumFromNToM(n, m){
+    let sum = 0;
+    for (let i = n; i <= m;i++) {
+        sum += i;
+    }
+    return sum;
+}
+
+// Дано число  n > 0 . Найдтиие дроби
+// 1+2+3+4...+n
+// 1*2*3*4...*n
+//
+// Напишите ф-цию. с именем fractional, которая принемает число n, и возвращает значение дроби.
+// Значение округлите до 3х десятичных знаков.
+function fractorial(n) {
+    let sum = 0;
+    let fuc = 1;
+    let f = sum / fuc;
+    for (let i = 1; i <= n;i++) {
+        sum += i;
+        fuc *= i;
+        f = sum / fuc;
+
+    }
+    return +f.toFixed(3);
+}
+//
+// Дано число n > 0. Определите, является ли данное число n простым.
+//     Число называется простым, если оно делится только на 1 и на самого себя
+// (т.е. число делителей числа равно 2). Например, числа 2, 3, 5, 5, 7, 11, 13, 17, 19 – простые.
+//     Число 1 не является ни простым, ни составным.
+//     Напишите функцию с именем isPrime, которая принимает число n и возвращает true, если число простое, и false - в противном случае.
+//     Примеры:
+//
+// функция isPrime(1) должна возвратить false;
+// функция isPrime(2) должна возвратить true;
+// функция isPrime(29) должна возвратить true;
+// функция isPrime(30) должна возвратить false.
+
+function isPrime(n){
+    if (n === 1) return false;
+    let count = 0;
+    for (let i = 1; i <= n;i++) {
+        if(n % i === 0) {
+            count++;
+        }
+    }
+    return count === 2 ? true : false;
+}
+
+
+// Не пользуясь операцией возведения в степень, возвести число a в степень n.
+//     power
+// Напишите функцию с именем power, которая принимает числa a и n в качестве аргументов и
+// возвращает значение a в степени n (a и n - целые неотрицательные числа).
+// В решении используйте цикл for. В этом задании нельзя использовать операцию возведения в
+// степень и методы объекта Math.
+//     Примеры:
+// функция power(3, 3) должна возвратить 27;
+// функция power(3, 0) должна возвратить 1;
+// функция power(0, 0) должна возвратить 1;
+// функция power(2, 5) должна возвратить 32.
+
+
+function power(a, n){
+    let res = 1;
+    for (let i = 0; i < n;i++) {
+        res = res * a;
+    }
+    return res;
+}
+//
+// Числа Фибоначчи - последовательность, в которой первые два числа равны 0 и 1,
+//     а каждое последующее число равно сумме двух предыдущих чисел: 0, 1, 1, 2, 3, 5, ...
+// Напишите функцию с именем fibonacciNumbers, которая принимает число n (n >= 2) в качестве
+// аргумента и возвращает массив из n чисел Фибоначчи.
+//     Примеры:
+// функция fibonacciNumbers(2) должна возвратить [0, 1];
+// функция fibonacciNumbers(5) должна возвратить [0, 1, 1, 2, 3];
+// функция fibonacciNumbers(7) должна возвратить [0, 1, 1, 2, 3, 5, 8].
+
+function fibonacciNumbers(n){
+    let arr = [0, 1];
+    for (let i = 2;i < n;i++) {
+        arr.push(arr[i - 2] + arr[i - 1]);
+    }
+    return arr;
+}
+
+
+// # Count the divisors of a number
+// # Count the number of divisors of a positive integer n.
+
+    function getDivisorsCnt(n){
+    let div = 0;
+    for (let i = 1; i <= n;i++) {
+        if (n % i === 0) {
+            div += 1;
+        }
+    }
+    return div
+}
+
+
+// Create a function named divisors/Divisors that takes an integer and returns an array with all of the integer's divisors(except for 1 and the number itself). If the number is prime return the string '(integer) is prime' (null in C#) (use Either String a in Haskell and Result<Vec<u32>, String> in Rust).
+
+// Example:
+
+// divisors(12); // should return [2,3,4,6]
+// divisors(25); // should return [5]
+// divisors(13); // should return "13 is prime"
+
+const divisors = (num) => {
+
+    let retArr = [];
+
+    if(isPrime(num)) {    // Вставляем нашу ф-цию, если число прайм
+        return num + ' is prime';
+    }
+
+    for(let i = 2; i < num; i++) {
+
+        if(num % i === 0) {
+            retArr.push(i);
+        }
+
+    }
+    return retArr;
+}
+
+function isPrime (num) {   // находим если число прайм
+
+    for(let i = 2; i < num; i++) {
+
+        if(!(num % i)) {
+            return false;
+        }
+
+    }
+    return true;
+}
+
+
+console.log(divisors(12));
+console.log(divisors(25));
+console.log(divisors(13));
+
+//best practice solution
+
+function divisorss(integer) {
+    var res = []
+    for (var i = 2; i <= Math.floor(integer / 2); ++i) if (integer % i === 0) res.push(i);
+    return res.length ? res : integer + ' is prime'
+}
+
+// Task:
+//     Your task is to write a function which returns the sum of following series upto nth term(parameter).
+//     Series: 1 + 1/4 + 1/7 + 1/10 + 1/13 + 1/16 +...
+// Rules:
+//     You need to round the answer to 2 decimal places and return it as String.
+//     If the given value is 0 then it should return 0.00
+// You will only be given Natural Numbers as arguments.
+
+// Sum of the first nth term of Series
+function SeriesSum(n) {
+    let result = 0;
+    let reverage = 1;
+    for (let i = 0; i < n; i += 1) {
+        if (i === 0) {
+            result = 1;
+        } else {
+            reverage += 3;
+            result = result + (1 / reverage);
+        }
+    }
+    return result.toFixed(2);
+};
+
+
+// Summation
+// Write a program that finds the summation of every number from 1 to num. The number will always be a positive integer greater than 0.
+//
+// For example:
+//
+//     summation(2) -> 3
+// 1 + 2
+//
+// summation(8) -> 36
+// 1 + 2 + 3 + 4 + 5 + 6 + 7 +
+
+var summation = function (num) {
+    let sum = 0 ;
+    while (num > 0) {
+        sum += num;
+        num = num - 1;
+    }
+    return sum;
+}
+
+// Beginner Series #3 Sum of Numbers
+// Given two integers a and b, which can be positive or negative,
+// find the sum of all the integers between including them too and return it.
+// If the two numbers are equal return a or b.
+//     Note: a and b are not ordered!
+//     Examples
+// GetSum(1, 0) == 1   // 1 + 0 = 1
+// GetSum(1, 2) == 3   // 1 + 2 = 3
+// GetSum(0, 1) == 1   // 0 + 1 = 1
+// GetSum(1, 1) == 1   // 1 Since both are same
+// GetSum(-1, 0) == -1 // -1 + 0 = -1
+// GetSum(-1, 2) == 2  // -1 + 0 + 1 + 2 = 2
+
+function getSum(a,b){
+    let count = 0;
+    if (a == b) return a;
+    if(a < b){
+        for (; a <= b; a++){
+            count += a;
+        }
+    } else if (a > b){
+        for(; b <= a; b++){
+            count += b;
+        }
+    }
+    return count;
+}
+
+// Training JS #10: loop statement --for
+//     Task
+//     Coding in function pickIt, function accept 1 parameter:arr, it's a number array, ' +
+// 'we need traverse arr by using for loop, if element is odd number, push it to array odd, if it'
+// s a even number, push it to array even.
+//     I've defined two array odd and even in the function, and also wrote the return statement.' +
+// ' your work is write a for loop.
+// If you forgot how to push an element to array, please refer to lesson 4.
+
+const pickIt = array => {
+    for (let i = 0; i < array.length; i++) {}
+    return [array.filter(number => number % 2 !== 0), array.filter(number => number % 2 === 0)]
+}
+
+// Sum of Multiples
+// Find the sum of all multiples of n below m
+//
+// Keep in Mind
+// n and m are natural numbers (positive integers)
+// m is excluded from the multiples
+// Examples
+// sumMul(2, 9)   ==> 2 + 4 + 6 + 8 = 20
+// sumMul(3, 13)  ==> 3 + 6 + 9 + 12 = 30
+// sumMul(4, 123) ==> 4 + 8 + 12 + ... = 1860
+// sumMul(4, -7)  ==> "INVALID"
+
+const sumMul = (n, m) => {
+    if (n >= m) return 'INVALID'
+
+    const last = Math.ceil(m / n) * n - n
+    return (last + n) * (last / n) / 2
+}
+
+
+// Reversed sequence
+// Get the number n (n>0) to return the reversed sequence from n to 1.
+//
+// Example : n=5 >> [5,4,3,2,1]
+
+
+const reverseSeq = n => {
+    let arr = [];
+    for (i = n; i >= 1;i--) {
+        arr.push(i);
+
+    }
+    return arr;
+};
+
+
+// lucky number
+// // ###Lucky number
+// // Write a function to find if a number is lucky or not.
+// //     If the sum of all digits is 0 or multiple of 9 then the number is lucky.
+// // 1892376 => 1+8+9+2+3+7+6 = 36. 36 is divisible by 9, hence number is lucky.
+// //     Function will return true for lucky numbers and false for others.
+
+function isLucky(n) {
+    let sumOfNum = 0;
+    while (n != 0) {
+        sumOfNum += n % 10;
+        n = Math.floor(n / 10);
+    }
+    if (sumOfNum === 0 || sumOfNum % 9 === 0) return true;
+    else return false;
+}
