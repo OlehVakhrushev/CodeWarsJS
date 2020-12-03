@@ -977,3 +977,85 @@ function isLucky(n) {
     if (sumOfNum === 0 || sumOfNum % 9 === 0) return true;
     else return false;
 }
+
+// First non-repeating character
+// Write a function named first_non_repeating_letter that takes a string input,
+//     and returns the first character that is not repeated anywhere in the string.
+//     For example, if given the input 'stress', the function should return 't',
+//     since the letter t only occurs once in the string, and occurs first in the string.
+//     As an added challenge, upper- and lowercase letters are considered the same
+// character, but the function should return the correct case for the initial letter.
+//     For example, the input 'sTreSS' should return 'T'.
+//     If a string contains all repeating characters, it should return an empty string
+// ("") or None -- see sample tests.
+
+function firstNonRepeatingLetter(s) {
+    s = s.split('')
+        .filter(el => s.toLowerCase().indexOf(el.toLowerCase()) === s.toLowerCase().lastIndexOf(el.toLowerCase()));
+    return (s.length === 0)? '' : s[0];
+}
+
+// Sum of Triangular Numbers
+// Your task is to return the sum of Triangular Numbers up-to-and-including the nth Triangular Number.
+//     Triangular Number: "any of the series of numbers (1, 3, 6, 10, 15, etc.) obtained by continued summation of the natural numbers 1, 2, 3, 4, 5, etc."
+// [01]
+// 02 [03]
+// 04 05 [06]
+// 07 08 09 [10]
+// 11 12 13 14 [15]
+// 16 17 18 19 20 [21]
+// e.g. If 4 is given: 1 + 3 + 6 + 10 = 20.
+// Triangular Numbers cannot be negative so return 0 if a negative number is given.
+
+function sumTriangularNumbers(n) {
+    let sum = 0
+    for (let i = 1; i <= n;i++) {
+        sum += i * (i + 1) / 2;
+    }
+    if (sum <= 0) return 0;
+    return sum;
+}
+
+// Draw stairs
+// Given a number n, draw stairs using the letter "I", n
+// tall and n wide, with the tallest in the top left.
+//     For example n = 3 result in:
+
+
+function drawStairs(n) {
+    let cnt = 0;
+    let result = '';
+    while(n > cnt){
+        result += ' '.repeat(cnt) + 'I';
+        cnt++;
+        if(n > cnt) result += '\n';
+    }
+    return result;
+}
+
+// Divisible by 9?
+//     Given a non-negative integer number represented as a string, which can be arbitrary large. Detect whether it is divisible by 9?
+//     e.g
+//     0 -> true
+// 7 -> false
+// 9 -> true
+// 18 -> true
+// 19 -> false
+// 777777777777777777777777777777777777777777777 -> true
+// Tips:
+//
+//     All input strings in the tests are valid non-negative integer numbers,
+//     you don't have to check that.
+// You'd better not use the arbitrary-precision data types from chosen programming languages, ' +
+// 'if any, to keep the kata fun :) , (for Java avoid BigInteger or BigDecimal, for ' +
+// 'Javascript avoid BigInt, etc).
+
+
+function divBy9(ns){
+    const input = BigInt(ns)
+    if (ns === "0") {
+        return true;
+    }else{
+        return input % 9n === 0n ?  true : false;
+    }
+}
