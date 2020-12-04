@@ -1059,3 +1059,107 @@ function divBy9(ns){
         return input % 9n === 0n ?  true : false;
     }
 }
+
+
+// How much coffee do you need?
+// //     Everybody know that you passed to much time awake during night time...
+// // Your task here is to define how much coffee you need to stay awake
+// // after your night. You will have to complete a function that take an array of events
+// // in arguments, according to this list you will return the number of coffee you need to stay
+// // awake during day time. Note: If the count exceed 3 please return 'You need extra sleep'.
+// //     The list of events can contain the following:
+// //     You come here, to solve some kata ('cw').
+// //     You have a dog or a cat that just decide to wake up too early ('dog' | 'cat').
+// //     You just watch a movie ('movie').
+// //     Other events can be present and it will be represent by arbitrary string, just ignore this one.
+// //     Each event can be downcase/lowercase, or uppercase. If it is downcase/lowercase you need 1 coffee by events and if it is uppercase you need 2 coffees.
+
+
+function howMuchCoffee(events) {
+    let arr = ['cw', 'cat', 'movie', 'dog'];
+    events = events.filter(el => arr.includes(el.toLowerCase()))
+        .map(el => el === el.toLowerCase() ? 1 : 2)
+        .reduce((acc, el) => acc + el, 0);
+    return events > 3 ? 'You need extra sleep' : events;
+}
+
+
+// Fruit string calculator
+// Given a string of words and numbers. Extract the expression including:
+//     the operator: either addition or subtraction
+// the two numbers that we are operating on
+// Return the result of the calculation.
+//     Example:
+// "Panda has 48 apples and loses 4" returns 44
+// "Jerry has 34 apples and gains 6" returns 40
+// "loses" and "gains" are the only two words describing operators.
+//     Should be a nice little kata for you :)
+// Note: No fruit debts nor bitten apples = The numbers are integers and no negatives
+
+
+function calculate(string) {
+    let arr = string.split(' ').filter(el => +el).map(el => +el)
+    return string.includes('loses')? arr[0] - arr[1] : arr[0] + arr[1];
+}
+
+
+
+// Remove the time
+// You're re-designing a blog and the blog's posts have the following format for
+//     showing the date and time a post was made:
+//     Weekday Month Day, time e.g., Friday May 2, 7pm
+// You're running out of screen real estate, and on some pages you want ' +
+// 'to display a shorter format, Weekday Month Day that omits the time.
+// Write a function, shortenToDate, that takes the Website date/time
+// in its original string format, and returns the shortened format.
+//     Assume shortenToDate's input will always be a string, e.g. "Friday May 2, 7pm".' +
+// ' Assume shortenToDate's output will be the shortened string, e.g., "Friday May 2".
+
+function shortenToDate(longDate) {
+    let a = longDate.split(',');
+    return a[0];
+}
+
+
+// Do you speak retsec?
+//     You and your friends want to play undercover agents.
+//     In order to exchange your secret messages, you've come up with the following system: you take' +
+// ' the word, cut it in half, and place the first half behind the latter. ' +
+// 'If the word has an uneven number of characters, you leave the middle at its previous place:
+// retsec examples
+// That way, you'll be able to exchange your messages in private.
+// Task
+// You're given a single word. Your task is to swap the halves. ' +
+// 'If the word has an uneven length, leave the character in the middle ' +
+// 'at that position and swap the chunks around it.
+
+
+function reverseByCenter(s){
+    let i = Math.trunc(s.length / 2);
+    return s.length % 2 === 0 ? s.slice(i) + s.slice(0, i) : s.slice(i + 1) + s[i] + s.slice(0, i);
+}
+
+
+// All Star Code Challenge #15
+// This Kata is intended as a small challenge for my students
+// Your family runs a shop and have just brought a Scrolling
+// Text Machine (http://3.imimg.com/data3/RP/IP/MY-2369478/l-e-d-multicolour-text-board-250x250.jpg) to help get some more business.
+// The scroller works by replacing the current text string with a similar text
+// string, but with the first letter shifted to the end; this simulates movement.
+//     You're father is far too busy with the business to worry about such details, so, naturally, he's
+// making you come up with the text strings.
+//     Create a function named rotate() that accepts a string argument and returns an array of
+// strings with each letter from the input string being rotated to the end.
+// rotate("Hello") // => ["elloH", "lloHe", "loHel", "oHell", "Hello"]
+// Note: The original string should be included in the output array The order matters.
+//     Each element of the output array should be the rotated version of the previous element.
+//     The output array SHOULD be the same length as the input string The function should return an emptry array with a 0 length string, '', as input
+
+function rotate(str){
+    let arr = [];
+    for(let i = 0; i < str.length; i++){
+        str = str.slice(1) + str[0];
+        arr.push(str);
+    }
+    return arr;
+}
