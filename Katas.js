@@ -1163,3 +1163,70 @@ function rotate(str){
     }
     return arr;
 }
+
+
+// Figurate Numbers #2 - Pronic Number
+// You have to create a function isPronic to check whether the argument passed is a Pronic Number and return true if it is & false otherwise.
+//     Description:
+// Pronic Number -A pronic number, oblong number, rectangular number or heteromecic number, is a number which is the product of two consecutive integers, that is, n(n + 1).
+//     The first few Pronic Numbers are - 0, 2, 6, 12, 20, 30, 42...
+//     Explanation:
+// 0 = 0 × 1   // ∴  0 is a Pronic Number
+// 2 = 1 × 2   // ∴  2 is a Pronic Number
+// 6 = 2 × 3   // ∴  6 is a Pronic Number
+// 12 = 3 × 4   // ∴ 12 is a Pronic Number
+// 20 = 4 × 5   // ∴ 20 is a Pronic Number
+// 30 = 5 × 6   // ∴ 30 is a Pronic Number
+// 42 = 6 × 7   // ∴ 42 is a Pronic Number
+
+const isPronic = n => {
+    for (let i = 0; i <= n; i++) {
+        if (n === i * (i + 1)) return true
+    }
+    return false
+}
+
+
+// Given an integer as input, can you round it to the next (meaning, "higher") multiple of 5?
+//     Examples:
+//     input:    output:
+//     0    ->   0
+// 2    ->   5
+// 3    ->   5
+// 12   ->   15
+// 21   ->   25
+// 30   ->   30
+// -2   ->   0
+// -5   ->   -5
+// etc.
+//     Input may be any positive or negative integer (including 0).
+// You can assume that all inputs are valid integers.
+
+function roundToNext5(n){
+    return Math.ceil(n / 5) * 5;
+}
+
+// The goal is to create a function 'numberToPower(number, power)' that "raises" the number up to power (ie multiplies number by itself power times).
+// // Examples
+// // numberToPower(3,2)  // -> 9 ( = 3 * 3 )
+// // numberToPower(2,3)  // -> 8 ( = 2 * 2 * 2 )
+// // numberToPower(10,6) // -> 1000000
+// // Note: Math.pow and some other Math functions like eval() and ** are disabled.
+
+function numberToPower(number, power){
+    let result=1;
+    for (let i=1;i<=power;i++){ result*=number}
+    return result
+}
+
+
+// Switcheroo
+// Given a string made up of letters a, b, and/or c, switch the position
+//     of letters a and b (change a to b and vice versa). Leave any incidence of c untouched.
+//     Example:
+//     'acb' --> 'bca'
+//     'aabacbaa' --> 'bbabcabb
+
+function switcheroo(x){
+    return x.replace(/a/g, 'B').replace(/b/g, "a").toLowerCase();
+}
