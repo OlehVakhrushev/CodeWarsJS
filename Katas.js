@@ -1230,3 +1230,104 @@ function numberToPower(number, power){
 function switcheroo(x){
     return x.replace(/a/g, 'B').replace(/b/g, "a").toLowerCase();
 }
+
+// Filter the number
+//
+// Your task is to return a number from a string.
+//     Details
+// You will be given a string of numbers and letters mixed up, you have to return
+// all the numbers in that string in the order they occur.
+
+var FilterString = function(value) {
+    return +value.replace(/[^0-9]/g, '');
+}
+
+// Vasya in his free time
+// Vasya has a very limited amount of free time. During these precision minutes
+// he likes to think about strings containing zeros and ones.
+//     Vasya considers the following operation: he chooses any two adjacent positions
+// in the string, and if one of them contains 0, and the other contains 1, then we are
+// allowed to remove these two digits from the string.
+//     Now Vasya thinks of what is the minimum length of the string that can remain after
+// applying the described operation several times (possibly, zero)? Help him to calculate this number.
+
+function CalculateString( n,  nums)
+{
+    let ones = 0;
+    for (element of nums) {
+        if (element === "1") {
+            ones++;
+        }
+    }
+    let zeros = n - ones;
+    return Math.abs(ones - zeros);
+}
+
+
+// Palindrome checker
+// // According to Wikipedia, a palindrome is "a word, phrase, number, or other " +
+// // "sequence of characters which reads the same backward or forward." Examples of
+// // palindromes include "racecar", "tacocat", and "123454321".
+// //     Capitalization, punctuation, and word dividers will be ignored when checking if
+// //     a string is a palindrome. For example, "Was it a car or a cat I saw?" is a valid
+// // palindrome in context of this Kata.
+// //     All requirements from definition should be fulfilled.
+// //     If the given string is a palindrome, return true.
+// //     If not, or in case of null input (None for Python) return false.
+
+function isPalindrome(str) {
+    if (str === null ) return false;
+    str = str.replace(/[^A-Za-z0-9]/gi, '').toLowerCase();
+    return str.split("").reverse().join('') === str;
+}
+
+
+// Check the exam
+// // The first input array is the key to the correct answers to an exam,
+// //     like ["a", "a", "b", "d"]. The second one contains a student's submitted answers.
+// // The two arrays are not empty and are the same length.
+// //     Return the score for this array of answers, giving +4 for each
+// //     correct answer, -1 for each incorrect answer, and +0 for each blank
+// // answer, represented as an empty string (in C the space character is used).
+// // If the score < 0, return 0.
+
+
+const checkExam = (answers, responses) => {
+    const score = responses.reduce((total, response, index) => {
+        if (!response) return total
+        if (response === answers[index]) return total + 4
+        if (response !== answers[index]) return total - 1
+
+        return total
+    }, 0)
+
+    return score > 0 ? score : 0
+}
+
+// Function Export
+module.exports = checkExam
+
+
+// Work with OBJECTS
+// Write a function that counts the letters in a string in object notation.
+//     Input
+// A string. e.g. "Hello World" If input is anything other than a string, it should return null
+// Should be an object of the letters and how often they show up. e.g. { d:1 e:1 h:1 l:3 o:2 r:1 w:1 }
+// Case-insensitive. So convert all letters to lowercase
+// Ignore whitespace
+// Ignore anything not a-z
+
+function countLetters (string) {
+    if (typeof string !== 'string') return null;
+    string = string.toLowerCase().replace(/[^a-z]/g, '');
+    let obj = {};
+    for (letter of string) {
+        if(letter in obj) {
+            obj[letter]++;
+        }
+        else {
+            obj[letter] = 1;
+        }
+    }
+    return obj;
+}
