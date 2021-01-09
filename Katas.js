@@ -1281,6 +1281,21 @@ function isPalindrome(str) {
     return str.split("").reverse().join('') === str;
 }
 
+// OR LIKE THAT
+
+
+function palindrome(str) {
+    return (
+        str.replace(/[\W_]/g, "").toLowerCase() ===
+        str
+            .replace(/[\W_]/g, "")
+            .toLowerCase()
+            .split("")
+            .reverse()
+            .join("")
+    );
+}
+
 
 // Check the exam
 // // The first input array is the key to the correct answers to an exam,
