@@ -1346,3 +1346,61 @@ function countLetters (string) {
     }
     return obj;
 }
+
+
+// Pyramin Pattern
+
+
+
+function stars(n) {
+    let str = '';
+    for (let i = 1;i <= n;i++) {
+        str += '*'.repeat(i) + '\n';
+    }
+    return str.slice(0, -1);
+}
+
+console.log(stars(5));
+
+
+
+let string = 'example';
+
+console.log(string.slice(1, -1));
+
+
+function f(n) {
+    let result = '';
+    for (let i = 1; i <= n; i= (i+2)) {
+        result += " ".repeat((n - i) / 2) + '*'.repeat(i) + " ".repeat((n - i) / 2) + '\n';
+    }
+    return result.slice(1, -1);
+}
+
+console.log(f(5));
+
+
+
+// Method MAP
+
+let arr = [1, 5, 7, 9, 0];
+let arr1 = arr.map(el => el * 2);
+let arr2 = arr.map(function(el){
+    return el * 2;
+});
+
+console.log(arr1);
+console.log(arr2);
+
+function oleg(g) {
+    return g.map( function(el){
+        if (el % 2 === 0) {
+            return el / 2;
+
+        } else {
+            return el;
+        }
+    })
+}
+
+
