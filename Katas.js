@@ -1461,3 +1461,57 @@ print()
 print('╔' + '═' * (i + 2) + '╦' + '═' * (len(fname) - i + 1) + '╗')
 print('║ ' + fname[0:i] + ' ║ ' + fname[i+1:] + ' ║')
 print('╚' + '═' * (i + 2) + '╩' + '═' * (len(fname) - i + 1) + '╝')
+
+
+#1. С помощью команды input введите трехзначное число и найдите сумму его цифр.
+print("Задание 1.")
+print('')
+number = (input ("Enter a three-digit number: "))
+total_sum = int(number[0])+int(number[1])+int(number[2])
+print(f"Sum of 3 digits in the three-digit number is {total_sum}")
+#2. С помощью команды input введите число сторон правильного многоугольника и найдите сумму его внутренних углов. Сумма углов n-угольника равна 180*(n-2)
+print('')
+print("Задание 2.")
+sides = int(input("Enter the number of sides of a polygon: "))
+exterior_angl_sum = 180 *(sides-2)
+print(f"Sum of the exterior angles of a polygon equals: {exterior_angl_sum} ")
+#3. С помощью команды input запросите у пользователя количество миль. Переведите это расстояние в километры и футы. 1 mile = 1.60934 km, 1 mile = 5280 feet.
+print('')
+print("Задание 3.")
+miles = int(input("Enter the amount of miles: "))
+m_to_km = 1.60934
+km_in_miles = round(m_to_km * miles,1) # округлить до одного знака после запятой
+feet = 5280
+feet_in_miles = round(km_in_miles * feet,1)
+print(f"There are {km_in_miles} kilometers in {miles} miles, or {feet_in_miles} feet. ")
+#4. С помощью команды input запросите у пользователя число градусов Фаренгейта и переведите это значение в градусы цельсия. Для этого нужно от числа градусов фаренгейта отнять 32, результат умножить на 5 и затем поделить на 9.
+print('')
+print("Задание 4.")
+fahr = int(input("Enter degrees in Fahrenheit: "))
+cels = round((fahr-32)*5/9)
+print(f"{fahr} degrees Fahrenheit is {cels} degrees Celsius.")
+#5. С помощью команды input запросите у пользователя число градусов цельсия. Напишите программу перевода градусов цельсия в градусы фаренгейта. Для этого нужно число градусов цельсия умножить на 9, затем разделить на 5 и затем к результату прибавить 32.
+print('')
+print("Задание 5.")
+cels = int(input("Enter degrees in Celsius: "))
+fahr = round(cels*9/5+32)
+print(f"{cels} degrees Celsius is {fahr} degrees Fahrenheit.")
+#6. С помощью команды input запросите у пользователя стоимость заказа, процент чаевых (tip_percent) и процент налогов (tax_percent). Найдите общую стоимость заказа (total_price).
+print('')
+print("Задание 6.")
+price=int(input("Please enter the price of the order: "))
+tip_percent = int(input("Please enter percentage amount of a tip :  "))
+tax_percent= float(input("Please enter tax percentage amount: "))
+tip_percent_conv = tip_percent/100 # перевести число, введенное пользователем, в десятичную дробь для корректного вычисления.
+    #ВОПРОС - если я ввожу не целое число в "Please enter percentage amount of a tip", а десятичное, например "2.3", то программа не работает. Почему?
+    tax_percent_conv = tax_percent/100
+    total_price = round(price + (price*tip_percent_conv)+ (price*tax_percent_conv),2)
+print(f"Total price of the order is {total_price} dollars")
+#7. С помощью команды input введите цену товара со скидкой и процент скидки. Найдите цену товара до скидки(полеую цену товара), результат округлите до 2-х знаков после зарятой. Например, товар со скидкой стоит 40 долларов прискидке 50%. Тогда цена товара без скидки составляет 80 долларов.
+print('')
+print("Задание 7.")
+disc_price = int(input("Please enter the discounted price in dollars: "))
+discount = int(input("Please enter percentage amount of the discount: "))
+disc_price_perc = 100 - discount # находим сколько процентов от исходной суммы представляет собой цена предмета со скидкой.
+    total_price = round(disc_price*100/disc_price_perc,2)
+print(f"Original price for the discounted item is {total_price} dollars.")
